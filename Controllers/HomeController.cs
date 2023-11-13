@@ -1,7 +1,6 @@
 ﻿using CRMTask.Models;
 using CRMTask.Data;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace CRMTask.Controllers
 {
@@ -62,7 +61,6 @@ namespace CRMTask.Controllers
             {
                 return NotFound();
             }
-
             _dbContext.Contacts.Remove(contact);
             _dbContext.SaveChanges();
             return RedirectToAction("Index");

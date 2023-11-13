@@ -45,7 +45,7 @@ function confirmDelete() {
 function isValid() {
     let res = true;
     const phoneIn = document.getElementById("phoneIn");
-    let phonePattern = /^\+375[0-9]{9}$/;
+    let phonePattern = /^\+?375[- ]?\d{2}[- ]?\d{3}[- ]?\d{2}[- ]?\d{2}$/;
     if (!phonePattern.test(phoneIn.value)) {
         phoneIn.style.borderColor = "red";
         document.getElementById("phoneError").style.display = "block";
