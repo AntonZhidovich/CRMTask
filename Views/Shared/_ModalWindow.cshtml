@@ -1,0 +1,44 @@
+﻿@model Contact
+
+<div class="modal" id="CreateModal"> 
+<div class="modal-dialog" >
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modalTitle">@ViewData["ModalName"]</h3>
+        </div>
+            <div class = "modal-body">
+                <form method="post" id="ModalForm" onsubmit="return isValid();">
+                <input type="hidden" asp-for="Id" value="0" id="idIn"/>
+                <div class="mb-3">
+                    <label asp-for="Name"></label>
+                    <input type="text" asp-for="Name" class="form-control" id="nameIn" required/>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="MobilePhone"></label>
+                    <input type="text" asp-for="MobilePhone" class="form-control" id="phoneIn" required/>
+                    <span class="alert-danger hidden" id="phoneError">Invalid number.</span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="JobTitle"></label>
+                    <input type="text" asp-for="JobTitle" class="form-control" id="jobIn" required/>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="BirthDate"></label>
+                    <input type="date" asp-for="BirthDate" class="form-control"  id="birthIn" required/>
+                    <span class="alert-danger hidden" id="birthError">Invalid birth date.</span>
+                </div>
+                <div class ="modal-footer">
+                    <button class = "btn btn-primary" type="submit">
+                        Save
+                    </button>
+                    <button class = "btn btn-danger" type="reset" onclick="HideModal();">
+                        Close
+                    </button>
+                </div>
+                </form>
+            </div>
+        </div>
+     </div>
+</div>
+
+<div class="overlay hidden" id="overlayElem"></div>

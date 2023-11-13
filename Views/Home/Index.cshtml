@@ -1,0 +1,50 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Contacts page";
+    ViewData["ModalName"] = "New contact";
+    var contacts = ViewBag.contacts;
+} 
+
+<div>
+    <button class="btn btn-primary" id="btnCreate" onclick="OnBtnCreate();">Create contact</button>
+</div>
+<hr/>
+<div class = "container">
+ <table class="table table-bordered" style="width:100%">
+     <thead>
+         <tr>
+         <th>Name</th>
+         <th>Mobile phone</th>
+         <th>Job title</th>
+         <th>Date of birth</th>
+         <th></th>
+         </tr>
+     </thead>
+     <tbody>
+
+        @foreach(var c in contacts)
+        {
+            <tr>
+                <td width="30%">@c.Name</td>
+                <td width="20%">@c.MobilePhone</td>
+                <td width="20%">@c.JobTitle</td>
+                <td width="15%">@c.BirthDate.ToString("D")</td>
+                <td width="15%">
+                    <div>
+                    <form method="post" onsubmit="return confirmDelete();">
+                    <button class="btn btn-success" onclick="OnBtnEdit(@c.Id);" type="button">
+                        Edit
+                    </button>
+                    <button class="btn btn-danger" asp-controller="Home" asp-action="Delete"  asp-route-id="@c.Id">
+                        Delete
+                        </button>
+                    </form >
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+ </table>
+</div>
+
+<partial name="~/Views/Shared/_ModalWindow.cshtml" view-data="ViewData" />
