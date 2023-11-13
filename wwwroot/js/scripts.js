@@ -28,6 +28,7 @@ function ShowModal() {
 }
 
 function HideModal() {
+    document.getElementById("ModalForm").reset();
     const overlay = document.getElementById("overlayElem");
     const modal = document.getElementById("CreateModal");
     overlay.classList.add("hidden");
@@ -53,8 +54,9 @@ function isValid() {
     }
     const birthIn = document.getElementById("birthIn");
     let dateNow = new Date();
+    let dateLow = new Date("01/01/1920");
     let userDate = new Date(birthIn.value);
-    if (userDate > dateNow) {
+    if (userDate > dateNow || userDate < dateLow) {
         birthIn.style.borderColor = "red";
         document.getElementById("birthError").style.display = "block";
         res = false;

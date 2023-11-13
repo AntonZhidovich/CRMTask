@@ -25,8 +25,15 @@ namespace CRMTask.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Add(contact);
-                _dbContext.SaveChanges();
+                try
+                {
+                    _dbContext.Add(contact);
+                    _dbContext.SaveChanges();
+                }
+                catch
+                {
+                    return BadRequest();
+                }
             }
             return RedirectToAction("Index");
         }
@@ -47,8 +54,15 @@ namespace CRMTask.Controllers
         {
             if (ModelState.IsValid)
             {
-                _dbContext.Contacts.Update(contact);
-                _dbContext.SaveChanges();
+                try
+                {
+                    _dbContext.Contacts.Update(contact);
+                    _dbContext.SaveChanges();
+                }
+                catch
+                {
+                    return BadRequest();
+                }
             }
             return RedirectToAction("Index");
         }
