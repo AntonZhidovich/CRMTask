@@ -29,6 +29,7 @@ function ShowModal() {
 
 function HideModal() {
     document.getElementById("ModalForm").reset();
+    document.getElementById("idIn").value = 0;
     const overlay = document.getElementById("overlayElem");
     const modal = document.getElementById("CreateModal");
     overlay.classList.add("hidden");
